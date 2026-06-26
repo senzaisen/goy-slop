@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Goyslop Japan — 化学調味料の楽園</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;500;700&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0a;
+    --surface: #111;
+    --card: #1a1a1a;
+    --text: #e5e5e5;
+    --muted: #888;
+    --red: #ef4444;
+    --orange: #f59e0b;
+    --green: #a3e635;
+    --pink: #f472b6;
+    --border: rgba(255,255,255,0.06);
+    --jp-red: #bc002d;
+    --jp-gold: #d4a853;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .bg-glow {
+    position: fixed;
+    top: -20vh; right: -15vw;
+    width: 60vw; height: 60vw;
+    background: radial-gradient(circle, rgba(188,0,45,0.05) 0%, transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .jp-label {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 700;
+    font-size: 0.7rem;
+    color: var(--jp-red);
+    letter-spacing: 0.15em;
+    margin-bottom: 8px;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 0;
+  }
+
+  .hero .badge {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.7rem;
+    color: var(--bg);
+    background: var(--jp-red);
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+
+  .hero h1 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(3.5rem, 12vw, 7rem);
+    color: var(--text);
+    letter-spacing: -0.03em;
+    line-height: 0.9;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .hero h1 .jp { font-family: 'Noto Sans JP', sans-serif; }
+
+  .hero .sub {
+    font-size: clamp(0.9rem, 1.6vw, 1.1rem);
+    color: var(--muted);
+    font-weight: 300;
+    max-width: 600px;
+    line-height: 1.8;
+    margin: 24px 0 40px;
+  }
+
+  .hero .sub strong { color: var(--pink); font-weight: 500; }
+
+  .scroll-down {
+    color: var(--muted);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    animation: pulse 2s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  /* SECTIONS */
+  section { padding: 80px 0; }
+
+  section h2 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  section h2 .jp-title {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 900;
+    display: block;
+    font-size: 0.5em;
+    color: var(--jp-red);
+    margin-top: 4px;
+  }
+
+  .divider {
+    width: 80px;
+    height: 2px;
+    background: var(--jp-red);
+    margin: 0 0 32px 0;
+    opacity: 0.5;
+  }
+
+  .body-text {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.9;
+    margin-bottom: 20px;
+    max-width: 700px;
+  }
+
+  .body-text strong { color: var(--text); font-weight: 500; }
+
+  /* STATS */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin: 32px 0;
+  }
+
+  .stat {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .stat .num {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1.8rem;
+    color: var(--orange);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat p {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .stat .jp-stat {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.65rem;
+    color: var(--jp-red);
+    margin-top: 4px;
+  }
+
+  /* PRODUCT CARDS */
+  .product-grid { display: grid; gap: 16px; margin: 32px 0; }
+
+  .product-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    transition: border-color 0.2s;
+  }
+
+  .product-card:hover { border-color: rgba(188,0,45,0.2); }
+
+  .product-card .emoji-box {
+    font-size: 2.5rem;
+    min-width: 60px;
+    text-align: center;
+    line-height: 1;
+  }
+
+  .product-card .info { flex: 1; }
+
+  .product-card .info .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .product-card .info h3 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1rem;
+    color: var(--text);
+    text-transform: uppercase;
+  }
+
+  .product-card .info h3 .jp-name {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 400;
+    font-size: 0.85em;
+    color: var(--muted);
+    display: block;
+    text-transform: none;
+  }
+
+  .rating {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .rating-s { background: #7f1d1d; color: #fca5a5; }
+  .rating-a { background: #78350f; color: #fcd34d; }
+  .rating-b { background: #1e3a5f; color: #93c5fd; }
+
+  .product-card .summary {
+    color: var(--muted);
+    font-size: 0.85rem;
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+
+  .product-card .ingredients {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--green);
+    line-height: 1.6;
+    background: rgba(0,0,0,0.3);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+
+  .product-card .ingredients .additive {
+    color: var(--orange);
+  }
+
+  /* KONBINI ROW */
+  .konbini-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 32px 0;
+  }
+
+  .konbini-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 20px;
+    text-align: center;
+  }
+
+  .konbini-card .logo {
+    font-size: 2.8rem;
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+
+  .konbini-card h3 {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .konbini-card p {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ADDITIVE SPECTACULAR */
+  .additive-wall {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 6px;
+    margin: 24px 0;
+  }
+
+  .additive-item {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--pink);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 10px;
+    text-align: center;
+    opacity: 0.75;
+    transition: opacity 0.2s;
+  }
+
+  .additive-item:hover { opacity: 1; }
+
+  /* VISUAL: CUP NOODLE */
+  .cup-visual {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    margin: 32px 0;
+    text-align: center;
+  }
+
+  .cup-visual .cup-art {
+    font-size: 6rem;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .cup-visual .cup-label {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 900;
+    font-size: 1.5rem;
+    letter-spacing: 0.2em;
+    color: var(--jp-red);
+  }
+
+  .cup-visual .cup-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+
+  .cup-visual .cup-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .cup-visual .cup-ing {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--orange);
+    background: rgba(0,0,0,0.3);
+    border-radius: 6px;
+    padding: 8px;
+    line-height: 1.4;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 60px 0 40px;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+  }
+
+  footer p {
+    color: var(--muted);
+    font-size: 0.85rem;
+    line-height: 1.8;
+  }
+
+  footer .jp-foot {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.9rem;
+    color: var(--jp-red);
+    margin-top: 8px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 700px) {
+    .product-card { flex-direction: column; }
+    .product-card .emoji-box { font-size: 2rem; min-width: auto; }
+    .konbini-row { grid-template-columns: 1fr; }
+    .cup-visual .cup-grid { grid-template-columns: repeat(2, 1fr); }
+    .stat-row { grid-template-columns: 1fr 1fr; }
+    section { padding: 50px 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-glow"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge">添加物パラダイス</div>
+  <h1>GOYSLOP<br><span class="jp">ジャパン</span></h1>
+  <p class="sub">Japan's food is <strong>not</strong> as clean as the world thinks. Beneath the omotenashi and kaiseki lies a parallel universe of chemical-laden konbini cuisine, additive-packed ramen, and vending machines that dispense pure industrial confection.</p>
+  <a href="#intro" class="scroll-down">スクロール</a>
+</section>
+
+<!-- INTRO -->
+<section id="intro">
+  <div class="container">
+    <p class="jp-label">/01 — 実態</p>
+    <h2>Japan's Dirty Secret <span class="jp-title">日本の汚い秘密</span></h2>
+    <div class="divider"></div>
+
+    <p class="body-text"><strong>Japan has a food problem.</strong> The country that gave the world washoku (UNESCO-listed traditional cuisine) also gave it Cup Noodle, Calpis, and konbini onigiri with a <strong>two-month shelf life</strong>. The cognitive dissonance is staggering: Michelin-star kaiseki on one hand, 7-Eleven egg salad sandwiches that last 2 weeks on the other.</p>
+
+    <p class="body-text">Japan is the <strong>third-largest consumer</strong> of ultra-processed foods in Asia. The konbini (コンビニ) — 7-Eleven, FamilyMart, Lawson — sell over <strong>50 billion items per year</strong>. The vast majority are chemically engineered: stabilized, emulsified, texturized, flavored, and colored to survive weeks on a shelf under fluorescent lights.</p>
+
+    <div class="stat-row">
+      <div class="stat">
+        <div class="num">55,000+</div>
+        <p>Konbini stores across Japan — one for every 2,300 people</p>
+        <div class="jp-stat">コンビニ飽和</div>
+      </div>
+      <div class="stat">
+        <div class="num">50B</div>
+        <p>Items sold annually from convenience stores</p>
+        <div class="jp-stat">年間販売数</div>
+      </div>
+      <div class="stat">
+        <div class="num">829</div>
+        <p>Food additives approved in Japan (vs ~400 in the EU)</p>
+        <div class="jp-stat">食品添加物</div>
+      </div>
+      <div class="stat">
+        <div class="num">80%</div>
+        <p>Of packaged Japanese food contains MSG or its derivatives</p>
+        <div class="jp-stat">うま味調味料</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONBINI TRIUMVIRATE -->
+<section>
+  <div class="container">
+    <p class="jp-label">/02 — コンビニ三巨頭</p>
+    <h2>The Konbini Triumvirate <span class="jp-title">セブン / ファミマ / ローソン</span></h2>
+    <div class="divider"></div>
+
+    <p class="body-text">Three chains, one reality. They define what most Japanese people eat daily. Breakfast, lunch, dinner, snacks — all from the same fluorescent-lit shelves, all engineered for shelf stability over nutritional value.</p>
+
+    <div class="konbini-row">
+      <div class="konbini-card">
+        <div class="logo">7️⃣</div>
+        <h3>7-Eleven</h3>
+        <p>セブン-イレブン<br>21,000+ stores. The king of konbini. Known for egg sandwiches that defy spoilage, fried chicken (ななチキ) made from mechanically separated poultry, and onigiri with entire chemical labs inside.</p>
+      </div>
+      <div class="konbini-card">
+        <div class="logo">🏪</div>
+        <h3>FamilyMart</h3>
+        <p>ファミリーマート<br>16,000+ stores. Famous for Famichiki (ファミチキ) — a deep-fried chicken-like product containing soy protein, modified starch, and 20+ additives. Also: the owner of the worst coffee cups in Japan.</p>
+      </div>
+      <div class="konbini-card">
+        <div class="logo">ℒ</div>
+        <h3>Lawson</h3>
+        <p>ローソン<br>14,000+ stores. Known for their extensive bento lineup. Their karaage bento contains over 15 additives including sodium tripolyphosphate and disodium succinate. Also runs "Natural Lawson" to pretend the other ones aren't chemical factories.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CUP NOODLE SPECTACULAR -->
+<section>
+  <div class="container">
+    <p class="jp-label">/03 — 即席麺化学</p>
+    <h2>The Instant Noodle Industrial Complex <span class="jp-title">カップヌードル帝国</span></h2>
+    <div class="divider"></div>
+
+    <div class="cup-visual">
+      <div class="cup-art">🍜</div>
+      <div class="cup-label">カップヌードル</div>
+      <div class="cup-sub">CUP NOODLE — SINCE 1971</div>
+      <div class="cup-grid">
+        <div class="cup-ing">MSG<br>グルタミン酸Na</div>
+        <div class="cup-ing">Disodium Succinate<br>コハク酸二Na</div>
+        <div class="cup-ing">Hydrolyzed Protein<br>加水分解タンパク</div>
+        <div class="cup-ing">TBHQ<br>tert-ブチルヒドロキノン</div>
+        <div class="cup-ing">Soy Lecithin<br>大豆レシチン</div>
+        <div class="cup-ing">Sodium Alginate<br>アルギン酸Na</div>
+        <div class="cup-ing">Sodium Carbonate<br>かんすい</div>
+        <div class="cup-ing">Sodium Phosphate<br>リン酸Na</div>
+      </div>
+      <p style="color:var(--muted);font-size:0.75rem;margin-top:16px;max-width:500px;margin-left:auto;margin-right:auto;">A single serving of Cup Noodle contains <span style="color:var(--orange);">30+ chemical additives</span> — more distinct chemical compounds than actual food ingredients. The noodles are flash-fried in palm oil preserved with TBHQ, the soup base is a crystalline MSG lattice, and the "shrimp" is a restructured protein product.</p>
+    </div>
+
+    <p class="body-text" style="margin-top:24px;">Nissin invented Cup Noodle in 1971. It now sells <strong>over 100 billion servings</strong> globally. The Japanese government uses it as emergency rations. It never spoils. <strong>Ever.</strong></p>
+
+    <div class="stat-row">
+      <div class="stat">
+        <div class="num">100B+</div>
+        <p>Servings of instant ramen consumed annually worldwide</p>
+      </div>
+      <div class="stat">
+        <div class="num">5.6B</div>
+        <p>Consumed in Japan alone — 44 servings per person per year</p>
+      </div>
+      <div class="stat">
+        <div class="num">730+</div>
+        <p>Days Cup Noodle can sit on a shelf and remain "edible"</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT CARDS -->
+<section>
+  <div class="container">
+    <p class="jp-label">/04 — 展示</p>
+    <h2>Exhibits A through Z <span class="jp-title">日本の加工食品</span></h2>
+    <div class="divider"></div>
+
+    <div class="product-grid">
+
+      <div class="product-card">
+        <div class="emoji-box">🍙</div>
+        <div class="info">
+          <div class="header">
+            <h3>Konbini Onigiri <span class="jp-name">コンビニおにぎり</span></h3>
+            <span class="rating rating-s">CLASS S</span>
+          </div>
+          <p class="summary">The icon of Japanese fast food — a rice ball stuffed with filling, wrapped in nori. Except the nori is factory-sealed to stay crisp for days (a moisture-absorbing chemical barrier), the rice is dosed with vinegar and amino acids for "freshness" and the fillings contain up to 9 preservatives each. The 2-month shelf life is achieved through modified atmosphere packaging, not tradition.</p>
+          <div class="ingredients">Rice (enzyme-treated), Nori (with <span class="additive">calcium propionate</span>), Filling: [Fish, <span class="additive">sorbitol</span>, <span class="additive">hydrolyzed protein</span>, <span class="additive">monosodium glutamate</span>, <span class="additive">disodium inosinate</span>, <span class="additive">caramel color</span>, <span class="additive">sodium benzoate</span>]</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="emoji-box">🍗</div>
+        <div class="info">
+          <div class="header">
+            <h3>Famichiki <span class="jp-name">ファミチキ</span></h3>
+            <span class="rating rating-s">CLASS S</span>
+          </div>
+          <p class="summary">FamilyMart's legendary fried chicken-like item. It is not whole chicken — it is "formed chicken" made from machine-separated meat, soy protein, and a slurry of 20+ binders and flavor enhancers. It contains no bones because it contains no parts of a chicken you would recognize. 100M+ sold annually.</p>
+          <div class="ingredients">Mechanically Separated Chicken, Water, <span class="additive">Soy Protein</span>, <span class="additive">Wheat Gluten</span>, Salt, Sugar, <span class="additive">Monosodium Glutamate</span>, <span class="additive">Sodium Phosphate</span>, <span class="additive">Modified Starch</span>, <span class="additive">Xanthan Gum</span>, <span class="additive">Yeast Extract</span>, <span class="additive">Disodium Inosinate</span>, <span class="additive">Sodium Erythorbate</span>, <span class="additive">Sodium Nitrite</span>, <span class="additive">Caramel Color</span>, <span class="additive">Soy Lecithin</span></div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="emoji-box">🥚</div>
+        <div class="info">
+          <div class="header">
+            <h3>Egg Sandwich <span class="jp-name">たまごサンド</span></h3>
+            <span class="rating rating-a">CLASS A</span>
+          </div>
+          <p class="summary">The beloved konbini egg sandwich. Soft white bread, creamy egg filling. 14-day shelf life. The "creaminess" comes from mayonnaise (shelf-stabilized with potassium sorbate), and the bread is preserved with calcium propionate and enzyme-modified to stay soft for weeks. Contains no butter or cream — only vegetable oil emulsifiers.</p>
+          <div class="ingredients">Bread (flour, sugar, <span class="additive">calcium propionate</span>, <span class="additive">DATEM</span>, <span class="additive">azodicarbonamide</span>), Egg Mayo (egg, soybean oil, vinegar, <span class="additive">MSG</span>, <span class="additive">potassium sorbate</span>, <span class="additive">xanthan gum</span>, <span class="additive">beta-carotene color</span>), <span class="additive">Glycerin</span>, <span class="additive">Sodium Dehydroacetate</span></div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="emoji-box">🥤</div>
+        <div class="info">
+          <div class="header">
+            <h3>Calpis <span class="jp-name">カルピス</span></h3>
+            <span class="rating rating-a">CLASS A</span>
+          </div>
+          <p class="summary">The "original Japanese probiotic" drink. Marketed as healthy, containing lactic acid bacteria. Also contains: corn syrup, artificial flavor, phosphoric acid, potassium sorbate, and caramel color. One bottle has 40g of sugar (10 teaspoons). The "lactic acid bacteria" is cultured in an industrial vat, heat-killed, and added back as powder. There is nothing alive in your Calpis.</p>
+          <div class="ingredients">Water, <span class="additive">High Fructose Corn Syrup</span>, Skim Milk, <span class="additive">Lactic Acid</span>, <span class="additive">Phosphoric Acid</span>, Natural and Artificial Flavor, <span class="additive">Potassium Sorbate</span>, <span class="additive">Caramel Color</span>, <span class="additive">Sucralose</span></div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="emoji-box">🍘</div>
+        <div class="info">
+          <div class="header">
+            <h3>Pocky <span class="jp-name">ポッキー</span></h3>
+            <span class="rating rating-b">CLASS B</span>
+          </div>
+          <p class="summary">A thin biscuit stick coated in flavored cream. The "chocolate" coating is not chocolate — it is a vegetable-oil-based compound coating (cocoa butter substitute made from palm kernel oil), containing 3 different emulsifiers to keep the "chocolate" stable at room temperature. The biscuit contains soy lecithin, sodium metabisulfite (bleach), and ammonium bicarbonate.</p>
+          <div class="ingredients">Wheat Flour, Sugar, <span class="additive">Palm Kernel Oil</span>, Cocoa Powder, Whole Milk Powder, <span class="additive">Soy Lecithin</span>, <span class="additive">Sodium Metabisulfite</span>, <span class="additive">Ammonium Bicarbonate</span>, Natural Flavor, <span class="additive">Polyglycerol Polyricinoleate</span>, <span class="additive">Beta-Carotene</span></div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="emoji-box">🧃</div>
+        <div class="info">
+          <div class="header">
+            <h3>Pocari Sweat <span class="jp-name">ポカリスエット</span></h3>
+            <span class="rating rating-b">CLASS B</span>
+          </div>
+          <p class="summary">Japan's #1 sports drink. Contains no sweat and no natural fruit juice. The flavor is a "synthetic grapefruit-citrus accord" built from 8 chemical compounds. The color comes from riboflavin (vitamin B2 — clever). The electrolytes are pure industrial isolates. 30g of sugar per 500ml bottle. Marketed as "health" because it replenishes sodium — which you don't need unless you're actively sweating.</p>
+          <div class="ingredients">Water, <span class="additive">High Fructose Corn Syrup</span>, Dextrin, <span class="additive">Citric Acid</span>, <span class="additive">Sodium Citrate</span>, <span class="additive">Potassium Phosphate</span>, <span class="additive">Magnesium Carbonate</span>, <span class="additive">Calcium Lactate</span>, <span class="additive">Riboflavin</span>, Artificial Flavor</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ADDITIVE WALL -->
+<section>
+  <div class="container">
+    <p class="jp-label">/05 — 添加物</p>
+    <h2>Japanese Additive Hall of Fame <span class="jp-title">食品添加物の殿堂</span></h2>
+    <div class="divider"></div>
+
+    <p class="body-text">Japan's food additive approval system is among the most permissive in the developed world. The following substances are <strong>approved in Japan</strong> but restricted or banned in the EU, Canada, or other jurisdictions. Many appear in multiple products you'll find in any konbini.</p>
+
+    <div class="additive-wall" id="additives"></div>
+
+    <p class="body-text" style="margin-top:24px;font-size:0.8rem;color:var(--muted);">Sources: Japanese Ministry of Health, Labour and Welfare (MHLW) Food Additive List; EU Food Additive Regulation (EC) 1333/2008; Codex Alimentarius. Data compiled 2025-2026.</p>
+  </div>
+</section>
+
+<!-- VENDING MACHINE SECTION -->
+<section>
+  <div class="container">
+    <p class="jp-label">/06 — 自動販売機</p>
+    <h2>Vending Machine Nation <span class="jp-title">自販機大国</span></h2>
+    <div class="divider"></div>
+
+    <p class="body-text">Japan has <strong>4 million vending machines</strong> — one for every 32 people. They dispense everything: hot coffee, cold coffee, tea, Coke, Pepsi, Pocari Sweat, Calpis, Fanta (with BVO, banned in EU), beer, chu-hi, cigarettes, hot dogs, ramen, eggs, batteries, umbrellas, and pornography.</p>
+
+    <p class="body-text">The vast majority of beverages in Japanese vending machines are classified as "soft drinks" by Japanese law, which has <strong>no restriction on high fructose corn syrup content, no mandatory sugar labeling, and no limits on artificial sweeteners</strong>. A 500ml bottle of Fanta Grape contains 27g of sugar and is artificially colored with <strong>Red 40, Blue 1, and caramel color</strong> — none of which require warning labels in Japan.</p>
+
+    <div class="stat-row">
+      <div class="stat">
+        <div class="num">4,000,000+</div>
+        <p>Vending machines across Japan</p>
+      </div>
+      <div class="stat">
+        <div class="num">1:32</div>
+        <p>Ratio of vending machines to people</p>
+      </div>
+      <div class="stat">
+        <div class="num">$45B</div>
+        <p>Annual vending machine sales</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCLUSION -->
+<section>
+  <div class="container">
+    <p class="jp-label">/07 — 結論</p>
+    <h2>The Truth <span class="jp-title">真実</span></h2>
+    <div class="divider"></div>
+
+    <p class="body-text">Japan's food culture is not "cleaner" than the West's. It is simply <strong>better marketed</strong>. The omotenashi branding, the washoku UNESCO designation, the 88-year-old sushi master narrative — all true, but all irrelevant to what most Japanese people actually eat daily.</p>
+
+    <p class="body-text">A 7-Eleven onigiri in Tokyo has more preservatives than a Subway sandwich in Ohio. A FamilyMart egg sandwich lasts longer than a Twinkie. Japanese katsu curry from a vending machine contains more chemical additives than a Hungry Man TV dinner.</p>
+
+    <p class="body-text"><strong>The solution is the same everywhere:</strong> eat from the perimeter of the store, not the aisles. Read the ingredient list — if you can't pronounce it, Japan probably invented it. And never, under any circumstances, trust a "healthy" drink called Pocari Sweat.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>Goyslop Japan is a critical examination of the industrial food system. It is not a condemnation of Japanese cuisine or culture, which has a rich and genuine culinary tradition.</p>
+    <p style="margin-top:8px;font-size:0.75rem;color:rgba(136,136,136,0.5);">It is, however, a condemnation of konbini egg sandwiches that last 2 weeks. That's just chemistry pretending to be food.</p>
+    <p class="jp-foot">日本食は世界一。コンビニは地獄だ。</p>
+  </div>
+</footer>
+
+<script>
+const additives = [
+  "Aspartame (L-フェニルアラニン化合物)", "Acesulfame K (アセスルファムK)",
+  "Sucralose (スクラロース)", "Sodium Saccharin (サッカリンNa)",
+  "TBHQ (tert-ブチルヒドロキノン)", "BHA (ブチルヒドロキシアニソール)",
+  "BHT (ジブチルヒドロキシトルエン)", "Propyl Gallate (没食子酸プロピル)",
+  "Sodium Nitrite (亜硝酸Na)", "Sodium Nitrate (硝酸Na)",
+  "Potassium Bromate (臭素酸K)", "Azodicarbonamide (アゾジカルボンアミド)",
+  "Calcium Propionate (プロピオン酸Ca)", "Sodium Benzoate (安息香酸Na)",
+  "Potassium Sorbate (ソルビン酸K)", "Sodium Dehydroacetate (デヒドロ酢酸Na)",
+  "Red 40 (赤色40号)", "Yellow 5 (黄色5号)", "Blue 1 (青色1号)",
+  "Tartrazine (タートラジン)", "Sunset Yellow (サンセットイエローFCF)",
+  "Brominated Vegetable Oil (臭素化植物油)", "Caramel Color IV (カラメル色素IV)",
+  "Titanium Dioxide (二酸化チタン)", "Aluminum Lake (アルミニウムレーキ)",
+  "Sodium Aluminum Phosphate (リン酸AlNa)", "Sodium Metabisulfite (亜硫酸水素Na)",
+  "Sulfur Dioxide (二酸化硫黄)", "Phosphoric Acid (リン酸)",
+  "Sodium Tripolyphosphate (トリポリリン酸Na)", "Disodium EDTA (EDTA二Na)",
+  "Propylene Glycol (プロピレングリコール)", "Polyglycerol Ester (ポリグリセリン脂肪酸エステル)",
+  "Sucrose Esters (ショ糖脂肪酸エステル)", "Sorbitan Monostearate (ソルビタン脂肪酸エステル)",
+  "Xanthan Gum (キサンタンガム)", "Carrageenan (カラギナン)",
+  "Gellan Gum (ジェランガム)", "Maltodextrin (マルトデキストリン)",
+  "Modified Starch (加工デンプン)", "Sodium Caseinate (カゼインNa)",
+  "Yeast Extract (酵母エキス)", "Hydrolyzed Vegetable Protein (加水分解植物性タンパク)",
+  "Disodium Inosinate (イノシン酸二Na)", "Disodium Guanylate (グアニル酸二Na)",
+  "Monosodium Glutamate (グルタミン酸Na)"
+];
+
+const wall = document.getElementById('additives');
+additives.forEach(a => {
+  const el = document.createElement('div');
+  el.className = 'additive-item';
+  el.textContent = a;
+  wall.appendChild(el);
+});
+</script>
+
+</body>
+</html>
